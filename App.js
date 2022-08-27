@@ -1,22 +1,26 @@
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import CovidScreen from "./src/screens/CovidScreen";
+import * as React from "react";
+import { Button, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./src/screens/HomeScreen";
+import CovidScreen from "./src/screens/CovidScreen";
 
 
+const Stack = createStackNavigator();
 
-const navigator = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Covid: CovidScreen
+function MyStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Covid" component={CovidScreen} />
+    </Stack.Navigator>
+  );
+}
 
-  },
-  {
-    initialRouteName: "Home",
-    defaultNavigationOptions: {
-      title: 'Covid-19 Statistics'
-    }
-  }
-);
-
-export default createAppContainer(navigator);
+export default function App() {
+  return (
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
+  );
+}
