@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./src/screens/HomeScreen";
 import CovidScreen from "./src/screens/CovidScreen";
+import { TailwindProvider } from 'tailwindcss-react-native';
 
 
 const Stack = createStackNavigator();
@@ -19,8 +20,10 @@ function MyStack() {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <MyStack />
-    </NavigationContainer>
+    <TailwindProvider>
+      <NavigationContainer>
+        <MyStack />
+      </NavigationContainer>
+      </TailwindProvider>
   );
 }
